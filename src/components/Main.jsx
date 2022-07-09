@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
 
 const Main = () => {
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState("Ankara");
   const [data, setData] = useState([]);
   const handleChange = (e) => {
     // console.log(e.target.value);
@@ -24,11 +24,15 @@ const Main = () => {
       // console.log(response);
       const { main, name, sys, weather, id } = response.data;
       const iconUrl = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
-      setData([{ main, name, sys, weather, iconUrl, id }]);
+      setData([...data, { main, name, sys, weather, iconUrl, id }]);
     } catch (err) {
       console.log(err);
     }
   };
+  useEffect(() => {
+    getWeatherDataFromApi();
+    setSearchText("");
+  }, []);
   console.log(data);
   return (
     <section className="main">
@@ -45,7 +49,9 @@ const Main = () => {
       </form>
       <div className="container">
         <ul className="cities">
-          <WeatherCard />
+          {data?.map((item) => (
+            <WeatherCard key={item.id} data={item} />
+          ))}
         </ul>
       </div>
     </section>

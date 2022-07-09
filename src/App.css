@@ -25,6 +25,12 @@ img {
   letter-spacing: 0.02em;
   padding: 0 0 30px 0;
 }
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
 button,
 input {
   border: none;
@@ -81,4 +87,60 @@ ul {
   left: 0;
   max-width: 450px;
   min-height: 40px;
+}
+.main .cities {
+  display: grid;
+  grid-gap: 32px 20px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.main .city {
+  position: relative;
+  padding: 40px 10%;
+  border-radius: 20px;
+  background: #fff;
+  color: #53627c;
+}
+
+.main .city::after {
+  content: "";
+  width: 90%;
+  height: 50px;
+  position: absolute;
+  bottom: -12px;
+  left: 5%;
+  z-index: -1;
+  opacity: 0.3;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.main figcaption {
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.main .city-temp {
+  font-size: 5rem;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #1e2432;
+}
+
+.main .city sup {
+  font-size: 0.5em;
+}
+
+.main .city-name sup {
+  padding: 0.2em 0.6em;
+  border-radius: 30px;
+  color: #fff;
+  background: #ff8c00;
+}
+
+.main .city-icon {
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
 }
